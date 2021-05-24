@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor

@@ -84,7 +84,6 @@ public class ToDoServiceImplV1 implements ToDoService {
 		try {
 			pStr = dbConn.prepareStatement(sql);
 			List<ListVO> tdList = this.select(pStr);
-
 			pStr.close();
 			return tdList;
 
@@ -98,7 +97,25 @@ public class ToDoServiceImplV1 implements ToDoService {
 
 	@Override
 	public ListVO selectBySeq(Long td_seq) {
-		// TODO seq로 검색
+		List<ListVO> lVO = new ArrayList<ListVO>();
+		String sql = " SELECT * FROM tbl_todolist ";
+		sql += " WHERE td_seq = ? ";
+		
+		PreparedStatement pStr = null ;
+		
+		try {
+			pStr = dbConn.prepareStatement(sql);
+			pStr.setLong(1, td_seq);
+			
+			lVO = this.select(pStr);
+			
+			return lVO.get(0);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
@@ -137,12 +154,56 @@ public class ToDoServiceImplV1 implements ToDoService {
 	@Override
 	public Integer update(Long td_seq) {
 		// TODO 수정하기
+		
+		ListVO tdVO = this.selectBySeq(td_seq);
+		
+		String sql = " UPDATE tbl_todolist SET ";
+		sql += " td_date=?, ";
+		sql += " td_time=?, ";
+		sql += " td_todo=?, ";
+		sql += " td_place=? ";
+		sql += " WHERE td_seq = ?  ";
+		
+		PreparedStatement pStr = null ;
+		
+		try {
+			pStr = dbConn.prepareStatement(sql);
+			pStr.setString(1, tdVO.getTd_date());
+			pStr.setString(2, tdVO.getTd_time());
+			pStr.setString(3, tdVO.getTd_todo());
+			pStr.setString(4, tdVO.getTd_place());
+			pStr.setLong(5, td_seq);
+			return pStr.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public Integer delete(Long td_seq) {
 		// TODO 삭제하기
+		
+		String sql = " DELETE FROM tbl_todolist ";
+		sql += " WHERE td_seq = ? ";
+		
+		PreparedStatement pStr = null;
+		
+		try {
+			pStr = dbConn.prepareStatement(sql);
+			pStr.setLong(1, td_seq);
+			Integer result = pStr.executeUpdate();
+			
+			pStr.close();
+			return result;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

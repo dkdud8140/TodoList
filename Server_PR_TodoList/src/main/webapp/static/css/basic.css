@@ -24,6 +24,7 @@ p {
 table {
 	margin: 30px auto;
 	border-collapse: collapse;
+	width: 60% ;
 }
 
 tr, td {
@@ -32,13 +33,14 @@ tr, td {
 }
 
 textarea {
-	width: 380px;
+	width: 50%;
 	border: 1px solid #d5819b;
 	padding: 3px;
 }
 
 td.td_input {
 	text-align: left;
+	
 }
 
 form {
@@ -57,7 +59,7 @@ button {
 	color: #d5819b;
 	font-weight: bolder;
 	border-radius: 3px;
-	width: 80px;
+	width: 60%;
 }
 
 button:hover {
@@ -65,14 +67,18 @@ button:hover {
 	color: teal;
 }
 
-.tb_list td, #tb_list tr {
+#tb_list td, #tb_list tr {
 	border-top: 1px solid #f3f3f3;
 }
 
-.tb_list tr:nth-child(even) {
+#tb_list tr:nth-child(even) {
 	background-color: #f3f3f3;
 }
 
+#tb_list tr:hover {
+	background-color: #F0FAF7;
+	cursor: pointer;
+}
 nav {
 	background-color: #F0FAF7;
 	margin: 10px;
@@ -93,4 +99,12 @@ li {
 li:hover {
 	background-color: #fff;
 	cursor: pointer;
+}
+
+form#tb_one {
+	background-color: #fff2f4;
+}
+
+form#tb_one button {
+	width : 20%;
 }

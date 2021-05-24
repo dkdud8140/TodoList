@@ -37,10 +37,7 @@ public class SearchController extends HttpServlet {
 		req.setAttribute("TDLIST", tdList);
 	
 		req.getRequestDispatcher("/WEB-INF/views/search.jsp").forward(req, resp);
-		
-		if(subPath.equals("/show")) {
-			req.getRequestDispatcher("/WEB-INF/views/show.jsp").forward(req, resp);
-		}
+
 	}
 
 	@Override
