@@ -105,6 +105,26 @@ public class ToDoServiceImplV1 implements ToDoService {
 	@Override
 	public List<ListVO> selectByDate(String td_date) {
 		// TODO 날짜별검색
+		
+		List<ListVO> lVO = new ArrayList<ListVO>();
+		String sql = " SELECT * FROM tbl_todolist ";
+		sql += " WHERE td_date = ? ";
+		
+		PreparedStatement pStr = null ;
+		
+		try {
+			pStr = dbConn.prepareStatement(sql);
+			pStr.setString(1, td_date);
+			
+			lVO = this.select(pStr);
+			
+			return lVO;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

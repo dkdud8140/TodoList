@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color :inherit;
+}
+
 h1 {
 	margin: 30px auto;
 	text-align: center;
@@ -52,7 +57,7 @@ button {
 	color: #d5819b;
 	font-weight: bolder;
 	border-radius: 3px;
-	width: 60px;
+	width: 80px;
 }
 
 button:hover {
@@ -60,10 +65,32 @@ button:hover {
 	color: teal;
 }
 
-#tb_list td, #tb_list tr {
+.tb_list td, #tb_list tr {
 	border-top: 1px solid #f3f3f3;
 }
 
-#tb_list tr:nth-child(even) {
+.tb_list tr:nth-child(even) {
 	background-color: #f3f3f3;
+}
+
+nav {
+	background-color: #F0FAF7;
+	margin: 10px;
+	list-style-type: none;
+	text-align: center;
+}
+
+ul {
+	align-content: center;
+	display: inline-block;
+}
+
+li {
+	display: inline-block;
+	padding: 10px ;
+}
+
+li:hover {
+	background-color: #fff;
+	cursor: pointer;
 }

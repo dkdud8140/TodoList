@@ -44,8 +44,8 @@
 </head>
 
 <body>
-	<h1>TO DO List</h1>
-	<p>🙋여러분의 하루를 응원합니다.</p>
+	
+	<%@ include file = "/WEB-INF/views/header_nav.jsp" %>
 
 	<form method="POST" class="save">
 		<table>
@@ -70,7 +70,7 @@
 		</table>
 	</form>
 
-	<table id="tb_list">
+	<table class="tb_list">
 		<tr>
 			<td style="width: 100px">No.</td>
 			<td style="width: 150px">작성일자</td>
