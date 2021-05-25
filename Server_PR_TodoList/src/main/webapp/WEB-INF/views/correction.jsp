@@ -12,68 +12,60 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function(){
 		
-		document.querySelector("button.btn_update").addEventListener("click",function(ev) {
-
-			let td_date = document.querySelector("input[name='td_date']");
-			let td_time = document.querySelector("input[name='td_time']");
-			let td_todo = document.querySelector("textarea");
-			let td_place = document.querySelector("input[name='td_place']");
-
-			if (td_date.value == "") {
-				alert("작성일자는 반드시 입력하세요.");
-				td_date.focus();
-				return false;
-			}
-			if (td_time.value == "") {
-				alert("작성시간은 반드시 입력하세요.");
-				td_time.focus();
-				return false;
-			}
-			if (td_todo.value == "") {
-				alert("할 일은 반드시 입력하세요.");
-				td_todo.focus();
-				return false;
-			}
-
-			document.location.href="${rootPath}/one/update?td_seq=" + ${TDVOtd_seq} ;
-			alert("수정이 완료되었습니다.");
-
-		})
-		/*
-		document.querySelector("form#tb_one").addEventListener("click", function(ev){
+		document.querySelector("form.tb_one").addEventListener("click",function(ev) {
 			let className = ev.target.className ;
 			
 			if(className == "btn_update") {
-				document.location.href="${rootPath}/one/update?td_seq=" + ${TDVO.td_seq} ;
+				
+				let td_date = document.querySelector("input[name='td_date']");
+				let td_time = document.querySelector("input[name='td_time']");
+				let td_todo = document.querySelector("textarea");
+				let td_place = document.querySelector("input[name='td_place']");
+
+				if (td_date.value == "") {
+					alert("작성일자는 반드시 입력하세요.");
+					td_date.focus();
+					return false;
+				}
+				if (td_time.value == "") {
+					alert("작성시간은 반드시 입력하세요.");
+					td_time.focus();
+					return false;
+				}
+				if (td_todo.value == "") {
+					alert("할 일은 반드시 입력하세요.");
+					td_todo.focus();
+					return false;
+				}
+				
 				alert("수정을 완료하였습니다.");
-				dom.querySelector("form#tb_one").submit();
+				//document.location.href="${rootPath}/one/update?td_seq="+${TDVO.td_seq};
+				document.querySelector("form.tb_one").submit();
 				
 			} else if(className == "btn_delete") {
 				
 				if(confirm("정말 TO DO 내역을 삭제 하시겠습니까?")) {
-					document.replace("${rootPath}/one/delete?td_seq="+ ${TDVO.td_seq});
+					document.location.replace("${rootPath}/one/delete?td_seq="+${TDVO.td_seq});
+					//document.querySelector("form.tb_one").submit();
 				}
 			}
-		})*/
+		})
 	})	
 </script>
 
 </head>
 <body>
 	<%@ include file = "/WEB-INF/views/header_nav.jsp" %>
-	
-	
-	<form id="tb_one" method="POST" >
-	<table >
+
+	<form class="tb_one" method="POST" action = "${rootPath}/one/update?td_seq=${TDVO.td_seq}">
+	<table>
 		<tr>
 			<td>작성일자</td>
-			<td class="td_input"><input type="date" name="td_date"
-					value="${DATE}" /></td>
+			<td class="td_input"><input type="date" name="td_date"  value="${TDVO.td_date}" /></td>
 		</tr>
 		<tr>
 			<td>작성시간</td>
-			<td class="td_input"><input type="time" name="td_time"
-					value="${TIME}" /></td>
+			<td class="td_input"><input type="time" name="td_time" value="${TDVO.td_time}" /></td>
 		</tr>
 		<tr>
 			<td>할 일</td>
@@ -91,6 +83,8 @@
 		</tr>
 	</table>
 	</form>
+
+
 	
 	
 </body>

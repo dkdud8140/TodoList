@@ -101,10 +101,10 @@ li:hover {
 	cursor: pointer;
 }
 
-form#tb_one {
+form.tb_one {
 	background-color: #fff2f4;
 }
 
-form#tb_one button {
+form.tb_one button {
 	width : 20%;
 }

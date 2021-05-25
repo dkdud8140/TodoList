@@ -54,11 +54,15 @@ td_date = '2021-05-22',  td_time = '10:00:20',  td_todo = '수정좀하자',  td
  WHERE td_seq = 22  ;
 
 
-UPDATE INTO tbl_todolist SET
-td_date = '2021-05-22',  td_time = '10:00:20',  td_todo = 'dsfdffffff',  td_place = '집' 
- WHERE td_seq = 22 ; 
+UPDATE tbl_todolist SET
+td_date = '2021-05-22',
+td_time = '10:00:20',
+td_todo = 'dsfdffffff',
+td_place = '수정........' 
+ WHERE td_seq = 50 ; 
 
-
+DELETE FROM tbl_todolist
+WHERE td_seq = 50 ;
 
 
 

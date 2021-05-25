@@ -20,7 +20,7 @@ public interface ToDoService {
 	
 	
 	// 수정
-	public Integer update(Long td_seq);
+	public Integer update(ListVO tdVO);
 	
 	// 삭제
 	public Integer delete(Long td_seq);

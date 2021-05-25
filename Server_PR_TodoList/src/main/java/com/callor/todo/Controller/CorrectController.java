@@ -28,20 +28,25 @@ public class CorrectController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String subPath = req.getPathInfo();
+
+		if (subPath == null ) {
+			String strSeq = req.getParameter("td_seq");
+			Long td_seq = Long.valueOf(strSeq);
+			ListVO tdVO = tdS.selectBySeq(td_seq);
+			
+			req.setAttribute("TDVO", tdVO);
+			req.getRequestDispatcher("/WEB-INF/views/correction.jsp").forward(req, resp);
+			
+		}  else if (subPath.equals("/delete")) {
+
 			String strSeq = req.getParameter("td_seq");
 			Long td_seq = Long.valueOf(strSeq);
 
-			SimpleDateFormat sd_date = new SimpleDateFormat("yyyy-MM-dd");
-			SimpleDateFormat sd_time = new SimpleDateFormat("HH:mm:ss");
+			tdS.delete(td_seq);
+			resp.sendRedirect("/todo/");
+		}
 
-			Date date = new Date(System.currentTimeMillis());
-
-			ListVO tdVO = tdS.selectBySeq(td_seq);
-
-			req.setAttribute("DATE", sd_date.format(date));
-			req.setAttribute("TIME", sd_time.format(date));
-			req.setAttribute("TDVO", tdVO);
-			req.getRequestDispatcher("/WEB-INF/views/correction.jsp").forward(req, resp);
 
 	}
 
@@ -50,32 +55,28 @@ public class CorrectController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String subPath = req.getPathInfo();
 		
-		String strSeq = req.getParameter("td_seq");
-		Long td_seq = Long.valueOf(strSeq);
-		String td_date = req.getParameter("td_date");
-		String td_time = req.getParameter("td_time");
-		String td_todo = req.getParameter("td_todo");
-		String td_place= req.getParameter("td_place");
-		
-		ListVO tdVO = new ListVO();
-		
-		tdVO.setTd_seq(td_seq);
-		tdVO.setTd_date(td_date);
-		tdVO.setTd_time(td_time);
-		tdVO.setTd_todo(td_todo);
-		tdVO.setTd_place(td_place);
-		
+		System.out.println(subPath);
 		if (subPath.equals("/update")) {
-
-			tdS.update(td_seq);
-			resp.sendRedirect("/todo");
-
-		} else if (subPath.equals("/delete")) {
+			String strSeq = req.getParameter("td_seq");
+			Long td_seq = Long.valueOf(strSeq);
 			
-			tdS.delete(td_seq);
-			resp.sendRedirect("/todo");
-		}
+			ListVO tdVO = tdS.selectBySeq(td_seq);
+			
+			String td_date = req.getParameter("td_date");
+			String td_time = req.getParameter("td_time");
+			String td_todo = req.getParameter("td_todo");
+			String td_place = req.getParameter("td_place");
+			
+			tdVO.setTd_seq(td_seq);
+			tdVO.setTd_date(td_date);
+			tdVO.setTd_time(td_time);
+			tdVO.setTd_todo(td_todo);
+			tdVO.setTd_place(td_place);
+			Integer result = tdS.update(tdVO);
+			if (result > 0)
+				resp.sendRedirect("/todo/");
 
+		}
 	}
 
 }

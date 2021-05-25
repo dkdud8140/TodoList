@@ -152,28 +152,28 @@ public class ToDoServiceImplV1 implements ToDoService {
 	}
 
 	@Override
-	public Integer update(Long td_seq) {
+	public Integer update(ListVO tdVO) {
 		// TODO 수정하기
 		
-		ListVO tdVO = this.selectBySeq(td_seq);
-		
 		String sql = " UPDATE tbl_todolist SET ";
-		sql += " td_date=?, ";
-		sql += " td_time=?, ";
-		sql += " td_todo=?, ";
-		sql += " td_place=? ";
+		sql += " td_date = ?, ";
+		sql += " td_time = ?, ";
+		sql += " td_todo = ?, ";
+		sql += " td_place = ? ";
 		sql += " WHERE td_seq = ?  ";
 		
 		PreparedStatement pStr = null ;
-		
 		try {
 			pStr = dbConn.prepareStatement(sql);
 			pStr.setString(1, tdVO.getTd_date());
 			pStr.setString(2, tdVO.getTd_time());
 			pStr.setString(3, tdVO.getTd_todo());
 			pStr.setString(4, tdVO.getTd_place());
-			pStr.setLong(5, td_seq);
-			return pStr.executeUpdate();
+			pStr.setLong(5, tdVO.getTd_seq());
+			Integer result = pStr.executeUpdate();
+			
+			pStr.close();
+			return result;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -188,14 +188,14 @@ public class ToDoServiceImplV1 implements ToDoService {
 		
 		String sql = " DELETE FROM tbl_todolist ";
 		sql += " WHERE td_seq = ? ";
-		
 		PreparedStatement pStr = null;
 		
 		try {
 			pStr = dbConn.prepareStatement(sql);
 			pStr.setLong(1, td_seq);
-			Integer result = pStr.executeUpdate();
+			System.out.println(sql);
 			
+			Integer result = pStr.executeUpdate();
 			pStr.close();
 			return result;
 			
