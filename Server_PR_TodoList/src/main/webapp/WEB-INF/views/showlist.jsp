@@ -20,7 +20,7 @@
 
 
 	<table id="tb_list">
-		<tr>
+		<tr style ="pointer-events: none;">
 			<td style="width: 100px">No.</td>
 			<td style="width: 150px">작성일자</td>
 			<td style="width: 500px">할일</td>

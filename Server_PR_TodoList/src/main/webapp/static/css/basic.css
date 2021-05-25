@@ -24,7 +24,7 @@ p {
 table {
 	margin: 30px auto;
 	border-collapse: collapse;
-	width: 60% ;
+	width: 50% ;
 }
 
 tr, td {
@@ -33,14 +33,15 @@ tr, td {
 }
 
 textarea {
-	width: 50%;
+	width: 90%;
 	border: 1px solid #d5819b;
 	padding: 3px;
+	margin : 0 ;
 }
 
 td.td_input {
 	text-align: left;
-	
+	padding: 5px 0  ;
 }
 
 form {
@@ -50,6 +51,8 @@ form {
 input {
 	border: 1px solid #d5819b;
 	padding: 3px;
+	margin : 0 ;
+	width : 90%;
 }
 
 button {
@@ -107,4 +110,5 @@ form.tb_one {
 
 form.tb_one button {
 	width : 20%;
+	margin : 0 ;
 }

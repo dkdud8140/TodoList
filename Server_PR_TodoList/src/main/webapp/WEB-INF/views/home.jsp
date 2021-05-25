@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TO DO LIST</title>
-<link href="${rootPath}/static/css/basic.css?ver-001" rel="stylesheet" />
+<link href="${rootPath}/static/css/basic.css?ver-002" rel="stylesheet" />
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 
@@ -59,7 +59,7 @@
 			</tr>
 			<tr>
 				<td><label>할일</label></td>
-				<td class="td_input" colspan="3"><textarea name="td_todo"></textarea>
+				<td class="td_input" colspan="3"><textarea name="td_todo" style="width:97%"></textarea>
 				</td>
 			</tr>
 			<tr>

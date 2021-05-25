@@ -19,7 +19,7 @@
 				<td><label>작성날짜로 검색하기</label></td>
 				<td class="td_input"><input type="date" name="td_date"
 					value="${DATE}" /></td>
-				<td><button style="width: 150px">검색하기</button></td>
+				<td><button style="width: 70%">검색하기</button></td>
 			</tr>
 		</table>
 	</form>

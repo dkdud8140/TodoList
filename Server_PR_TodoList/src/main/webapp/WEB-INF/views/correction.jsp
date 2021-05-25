@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>선택한 목록</title>
-<link href="${rootPath}/static/css/basic.css?ver-001" rel="stylesheet" />
+<link href="${rootPath}/static/css/basic.css?ver-002" rel="stylesheet" />
 
 <script>
 	document.addEventListener("DOMContentLoaded", function(){
@@ -76,7 +76,7 @@
 			<td class="td_input"><input name="td_place" value ="${TDVO.td_place}"/></td>
 		</tr>
 		<tr>
-			<td style = "text-align: right; align-content: right; " colspan="2">
+			<td style = "text-align: right; align-content: right; padding-right:7% " colspan="2">
 			<button class = "btn_update" type="button">수정하기</button>
 			<button class = "btn_delete" type="button">삭제하기</button>
 			</td>
